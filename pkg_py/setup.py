@@ -22,7 +22,8 @@ setup(
         'console_scripts': [
             "temp_node=pkg_py.temp_node:main",
             "collector=pkg_py.collector:main",
-            "pressure=pkg_py.pressure:main"
+            "pressure=pkg_py.pressure:main",
+            "humidity=pkg_py.humidity:main"
         ],
     },
 )
