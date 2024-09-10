@@ -9,8 +9,8 @@ class aggregatorNode(Node):
         self.get_logger().info("Data Collection Has been Started!!")
     def callback(self,msg):
         if(msg.data[0]==1 ):
-            if(msg.data[1]>=10 % msg.data[1]<=100):
-                self.get_logger().info("Sensor is working  & Temperature is " + str(msg.data) + "°C")
+            if(msg.data[1]>=10 & msg.data[1]<=100):
+                self.get_logger().info("Sensor is working  & Temperature is " + str(msg.data[1]) + "°C")
             else:
                 self.get_logger().info("Sensor is working but Temperature out of Range!!")
         else:

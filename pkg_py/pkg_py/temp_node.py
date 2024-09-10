@@ -11,8 +11,9 @@ class TemperatureNode(Node):
         self.get_logger().info("Temprature has been published!!")
     def publish_temp(self):
         msg=Int8MultiArray()
-        msg.data[0]=1 #error status
-        msg.data[1]= random.randint(10,100) #temperature ranges from 10°C to 100°C
+        error_status = random.randint(0,1)
+        msg.data.append(error_status) #error status
+        msg.data.append(random.randint(0,110))  #temperature ranges from 10°C to 100°C
         self.publisher_.publish(msg)
 def main(args=None):
     rclpy.init(args=args)
