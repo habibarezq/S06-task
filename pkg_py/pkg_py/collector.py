@@ -19,7 +19,7 @@ class aggregatorNode(Node):
         self.get_logger().info(f"Pressure is {self.aggregated_data.pressure:.2f} atm")
     def callback_humidity(self,msg):
         self.aggregated_data.humidity=msg.data
-        self.get_logger().info(f"Humidity is {self.aggregated_data.humidity:.2f} p")
+        self.get_logger().info(f"Humidity is {self.aggregated_data.humidity:.2f} %")
 def main(args=None):
     rclpy.init(args=args)
     node=aggregatorNode()
