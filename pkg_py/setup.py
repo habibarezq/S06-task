@@ -21,7 +21,8 @@ setup(
     entry_points={
         'console_scripts': [
             "temp_node=pkg_py.temp_node:main",
-            "collector=pkg_py.collector:main"
+            "collector=pkg_py.collector:main",
+            "pressure=pkg_py.pressure:main"
         ],
     },
 )
