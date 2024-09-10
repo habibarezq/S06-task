@@ -14,6 +14,7 @@ class TemperatureNode(Node):
         msg=Float32()
         msg.data=self.get_temperature() #temperature ranges from 10°C to 100°C
         self.publisher_.publish(msg)
+        
         if self.error():
             error_msg=String()
             error_msg.data="Error in Temperature Sensor"
