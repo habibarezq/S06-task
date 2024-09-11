@@ -9,7 +9,7 @@ class PressureNode(Node):
         super().__init__("pressure")
         self.publisher_=self.create_publisher(Float32,"pressure",10)
         self.error_status_=self.create_publisher(String,"pressure_error",10)
-        self.timer=self.create_timer(1,self.publish_pressure)
+        self.timer=self.create_timer(5,self.publish_pressure)
         self.get_logger().info("Pressure has been published!!")
 
     def publish_pressure(self):
@@ -23,7 +23,8 @@ class PressureNode(Node):
             self.error_status_.publish(error_msg)
 
     def get_pressure(self):
-        return random.uniform(0.95,1.2)
+        return 0.98
+        #random.uniform(0.95,1.2)
     
     def error(self):
         return False

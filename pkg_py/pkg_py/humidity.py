@@ -9,7 +9,7 @@ class HumidityNode(Node):
         super().__init__("humidity")
         self.publisher_=self.create_publisher(Float32,"humidity",10)
         self.error_status_=self.create_publisher(String,"humidity_error",10)
-        self.timer=self.create_timer(1,self.publish_humidity)
+        self.timer=self.create_timer(5,self.publish_humidity)
         self.get_logger().info("Humidity has been published!!")
 
     def publish_humidity(self):
@@ -23,7 +23,8 @@ class HumidityNode(Node):
             self.error_status_.publish(error_msg)
 
     def get_humidity(self):
-        return random.uniform(0.7,0.95)
+        return 0.7
+        #random.uniform(0.7,0.95)
     
     def error(self):
         return False

@@ -8,7 +8,8 @@ class TemperatureNode(Node):
         super().__init__("temp_node")
         self.publisher_=self.create_publisher(Float32,"Temperature",10)
         self.error_status_=self.create_publisher(String,"temperature_error",10)
-        self.timer=self.create_timer(1,self.publish_temp)
+        self.timer=self.create_timer(5,self.publish_temp)
+        #self.publish_temp()
         self.get_logger().info("Temprature has been published!!")
     def publish_temp(self):
         msg=Float32()
@@ -20,7 +21,8 @@ class TemperatureNode(Node):
             error_msg.data="Error in Temperature Sensor"
             self.error_status_.publish(error_msg)
     def get_temperature(self):
-        return random.uniform(10,100)
+        return 25.0
+        #random.uniform(10,100)
     def error(self):
         return False
 def main(args=None):
