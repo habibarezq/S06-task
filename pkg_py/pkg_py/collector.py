@@ -3,7 +3,6 @@ import rclpy
 from rclpy.node import Node
 from example_interfaces.msg import Float32 , String
 from weather_interfaces.msg import AggregatedData
-from weather_interfaces.srv import MonitorData
 class aggregatorNode(Node):
     def __init__(self):
         super().__init__("collector")
