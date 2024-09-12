@@ -13,7 +13,6 @@ class weatherForecastServer (Node):
     def callback (self, request, response):
         # request=MonitorData.Request()
         # response = MonitorData.Response()
-
         # response.reply = ""
 
         if (request.temperature is None):
