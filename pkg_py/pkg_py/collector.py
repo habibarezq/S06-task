@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 import rclpy
 from rclpy.node import Node
-from example_interfaces.msg import Float32 , String
-from weather_interfaces.msg import AggregatedData
+from example_interfaces.msg import Float32 
 from weather_interfaces.srv import MonitorData
 class aggregatorNode(Node):
     def __init__(self):
@@ -10,49 +9,35 @@ class aggregatorNode(Node):
         self.subscriber_temp_=self.create_subscription(Float32,"Temperature",self.callback_temp,10)
         self.subscriber_pres_=self.create_subscription(Float32,"pressure",self.callback_pressure,10)
         self.subscriber_humidity_=self.create_subscription(Float32,"humidity",self.callback_humidity,10)
-        self.temperature = 0.0
-        self.pressure = 0.0
-        self.humidity = 0.0
-        # self.call_WeatherData ()
-        # self.aggregated_data = AggregatedData()
-        
-        # Initialize data to None
-        # self.reset_aggregated_data()
-
+        # self.temperature = 0.0
+        # self.pressure = 0.0
+        # self.humidity = 0.0
+        self.reset_aggregated_data()
         self.get_logger().info("Data Collection Has been Started!!")
 
-        
 
     def reset_aggregated_data(self):
-        self.aggregated_data.temperature = None
-        self.aggregated_data.pressure = None
-        self.aggregated_data.humidity = None
+        self.temperature = None
+        self.pressure = None
+        self.humidity = None
 
 
     def callback_temp(self,msg):
         self.temperature=msg.data
         self.get_logger().info(f"Temperature is {self.temperature:.2f} °C")
         self.call_WeatherData ()
-        # self.check_data() 
-        # self.call_WeatherData (msg.data)
+
 
     def callback_pressure(self,msg):
         self.pressure=msg.data
         self.get_logger().info(f"Pressure is {self.pressure:.2f} atm")
         self.call_WeatherData ()
-        # self.check_data() 
+
 
     def callback_humidity(self,msg):
-        # self.aggregated_data.humidity=msg.data
         self.humidity = msg.data
         self.get_logger().info(f"Humidity is {self.humidity:.2f} %")
         self.call_WeatherData ()
-
-    # def check_data(self): #checks if all info has been collected before sending it
-    #     #checks if all info has been collected before sending it
-    #     if self.aggregated_data.temperature is not None and self.aggregated_data.pressure is not None and self.aggregated_data.humidity is not None:
-    #         self.get_logger().info("All data collected. Sending to server...")
-    #         self.call_monitor_data_server()
 
     def call_WeatherData (self):
         client = self.create_client(MonitorData, "WeatherData")

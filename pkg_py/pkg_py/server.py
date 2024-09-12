@@ -6,14 +6,10 @@ class weatherForecastServer (Node):
     def __init__(self):
         super().__init__("server")
         self.server = self.create_service(MonitorData, "WeatherData", self.callback)
-        #self.weather_data = MonitorData()
 
         self.get_logger().info("Server is up")
 
     def callback (self, request, response):
-        # request=MonitorData.Request()
-        # response = MonitorData.Response()
-        # response.reply = ""
         
         if (request.temperature is None):
             response.tempok = 0                                         # 0 means no data from sensor

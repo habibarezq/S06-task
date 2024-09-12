@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 import rclpy
 from rclpy.node import Node
-from example_interfaces.msg import Float32 , String
+from example_interfaces.msg import Float32 
 import random
+
 class PressureNode(Node):
     
     def __init__(self):
         super().__init__("pressure")
         self.publisher_=self.create_publisher(Float32,"pressure",10)
-        self.error_status_=self.create_publisher(String,"pressure_error",10)
         self.timer=self.create_timer(5,self.publish_pressure)
         self.get_logger().info("Pressure has been published!!")
 
@@ -17,16 +17,10 @@ class PressureNode(Node):
         msg.data=self.get_pressure() #0.95atm<=p<=1.2atm
         self.publisher_.publish(msg)
 
-        if self.error():
-            error_msg=String()
-            error_msg.data="Error in Pressure Sensor"
-            self.error_status_.publish(error_msg)
 
     def get_pressure(self):
         return random.uniform(0.75,1.4)
     
-    def error(self):
-        return False
     
 def main(args=None):
     rclpy.init(args=args)
