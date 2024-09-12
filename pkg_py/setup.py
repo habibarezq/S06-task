@@ -23,7 +23,8 @@ setup(
             "temp_node=pkg_py.temp_node:main",
             "collector=pkg_py.collector:main",
             "pressure=pkg_py.pressure:main",
-            "humidity=pkg_py.humidity:main"
+            "humidity=pkg_py.humidity:main",
+            "server=pkg_py.server:main"
         ],
     },
 )

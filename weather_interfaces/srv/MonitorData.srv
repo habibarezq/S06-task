@@ -2,4 +2,6 @@ float32 temperature
 float32 pressure
 float32 humidity
 ---
-string reply
+int8 tempok
+int8 pressok
+int8 humok

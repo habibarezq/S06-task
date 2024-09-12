@@ -21,8 +21,7 @@ class TemperatureNode(Node):
             error_msg.data="Error in Temperature Sensor"
             self.error_status_.publish(error_msg)
     def get_temperature(self):
-        return 25.0
-        #random.uniform(10,100)
+        return random.uniform(0,110)
     def error(self):
         return False
 def main(args=None):

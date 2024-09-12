@@ -23,8 +23,7 @@ class PressureNode(Node):
             self.error_status_.publish(error_msg)
 
     def get_pressure(self):
-        return 0.98
-        #random.uniform(0.95,1.2)
+        return random.uniform(0.75,1.4)
     
     def error(self):
         return False
