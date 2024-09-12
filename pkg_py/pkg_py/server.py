@@ -14,36 +14,36 @@ class weatherForecastServer (Node):
         # request=MonitorData.Request()
         # response = MonitorData.Response()
         # response.reply = ""
-
+        
         if (request.temperature is None):
             response.tempok = 0                                         # 0 means no data from sensor
             # response.
             self.get_logger().error("No temperature data")
         elif (request.temperature < 10 or request.temperature > 100):
-            self.get_logger().warn("Temperature is out of range")
+            self.get_logger().warn(f"Temperature {request.temperature:.2f} is out of range")
             response.tempok = 1                                         # 1 means data is out of range
         else :
-            self.get_logger().info("Temperature is within range")
+            self.get_logger().info(f"Temperature {request.temperature:.2f} is within range")
             response.tempok = 2                                         # 2 means data is within range
 
         if (request.pressure is None):
             response.pressok = 4                                         # 0 means no data from sensor
             self.get_logger().error("No presssure data")
         elif (request.pressure < 0.95 or request.pressure > 1.2):
-            self.get_logger().warn("Pressure is out of range")
+            self.get_logger().warn(f"Pressure {request.pressure:.2f} is out of range")
             response.pressok = 5                                         # 1 means data is out of range
         else :
-            self.get_logger().info("Pressure is within range")
+            self.get_logger().info(f"Pressure {request.pressure:.2f} is within range")
             response.pressok = 6                                         # 2 means data is within range
 
         if (request.humidity is None):
             response.humok = 0                                         # 0 means no data from sensor
             self.get_logger().error("No humidity data")
         elif (request.humidity < 0.7 or request.humidity > 0.95):
-            self.get_logger().warn("Humidity is out of range")
+            self.get_logger().warn(f"Humidity {request.humidity:.2f} is out of range")
             response.humok = 1                                         # 1 means data is out of range
         else :
-            self.get_logger().info("Humidity is within range")
+            self.get_logger().info(f"Humidity {request.humidity:.2f} is within range")
             response.humok = 2                                         # 2 means data is within range
 
         return response
