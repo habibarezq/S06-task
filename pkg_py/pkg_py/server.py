@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import rclpy
 from rclpy.node import Node
 from weather_interfaces.srv import MonitorData
@@ -13,7 +14,6 @@ class weatherForecastServer (Node):
         
         if (request.temperature is None):
             response.tempok = 0                                         # 0 means no data from sensor
-            # response.
             self.get_logger().error("No temperature data")
         elif (request.temperature < 10 or request.temperature > 100):
             self.get_logger().warn(f"Temperature {request.temperature:.2f} is out of range")
