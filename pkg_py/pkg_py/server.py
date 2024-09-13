@@ -23,14 +23,14 @@ class weatherForecastServer (Node):
             response.tempok = 2                                         # 2 means data is within range
 
         if (request.pressure is None):
-            response.pressok = 4                                         # 0 means no data from sensor
+            response.pressok = 0                                         # 0 means no data from sensor
             self.get_logger().error("No presssure data")
         elif (request.pressure < 0.95 or request.pressure > 1.2):
             self.get_logger().warn(f"Pressure {request.pressure:.2f} is out of range")
-            response.pressok = 5                                         # 1 means data is out of range
+            response.pressok = 1                                         # 1 means data is out of range
         else :
             self.get_logger().info(f"Pressure {request.pressure:.2f} is within range")
-            response.pressok = 6                                         # 2 means data is within range
+            response.pressok = 2                                         # 2 means data is within range
 
         if (request.humidity is None):
             response.humok = 0                                         # 0 means no data from sensor
