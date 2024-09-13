@@ -9,7 +9,7 @@ class PressureNode(Node):
     def __init__(self):
         super().__init__("pressure")
         self.publisher_=self.create_publisher(Float32,"pressure",10)
-        self.timer=self.create_timer(5,self.publish_pressure)
+        self.timer=self.create_timer(10,self.publish_pressure)
         self.get_logger().info("Pressure has been published!!")
 
     def publish_pressure(self):
