@@ -1,14 +1,14 @@
 # !/usr/bin/env python3
 import rclpy
 from rclpy.node import Node
-from example_interfaces.msg import Float32 ,String
+from example_interfaces.msg import Float32 
 import random
 
 class TemperatureNode(Node):
     def __init__(self):
         super().__init__("temp_node")
         self.publisher_=self.create_publisher(Float32,"Temperature",10)
-        self.timer=self.create_timer(5,self.publish_temp)
+        self.timer=self.create_timer(10,self.publish_temp)
         self.get_logger().info("Temprature has been published!!")
 
     def publish_temp(self):
