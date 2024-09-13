@@ -9,7 +9,7 @@ class HumidityNode(Node):
     def __init__(self):
         super().__init__("humidity")
         self.publisher_=self.create_publisher(Float32,"humidity",10)
-        self.timer=self.create_timer(5,self.publish_humidity)
+        self.timer=self.create_timer(10,self.publish_humidity)
         self.get_logger().info("Humidity has been published!!")
 
     def publish_humidity(self):
