@@ -9,17 +9,15 @@ class aggregatorNode(Node):
         self.subscriber_temp_=self.create_subscription(Float32,"Temperature",self.callback_temp,10)
         self.subscriber_pres_=self.create_subscription(Float32,"pressure",self.callback_pressure,10)
         self.subscriber_humidity_=self.create_subscription(Float32,"humidity",self.callback_humidity,10)
-        # self.temperature = 0.0
-        # self.pressure = 0.0
-        # self.humidity = 0.0
+
         self.reset_aggregated_data()
         self.get_logger().info("Data Collection Has been Started!!")
 
 
     def reset_aggregated_data(self):
-        self.temperature = None
-        self.pressure = None
-        self.humidity = None
+         self.temperature = 0.0
+         self.pressure = 0.0
+         self.humidity = 0.0
 
 
     def callback_temp(self,msg):
